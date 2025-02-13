@@ -40,6 +40,7 @@ def findTypeKey(type):
                
      return target
 
+#left off here dissecting data to find right values possibly end up returning a tuple (value1, value2)
 def dissect_data(response, key):
       for key, value in response.items():
           if (key == "current"):
