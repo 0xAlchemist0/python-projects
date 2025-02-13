@@ -18,6 +18,10 @@ def historicalPrice(token, start, end, interval):
     
     return None
 
+
+def currentPrice(ticker):
+    return None
+
 def parameters(token ,start, end, interval):
     #returns a json array in tuple form which we cannot chnage once made
     return (
