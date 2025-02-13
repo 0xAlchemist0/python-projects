@@ -1,0 +1,5 @@
+{
+  "[python]": {
+    "editor.defaultFormatter": "KevinRose.vsc-python-indent"
+  }
+}
