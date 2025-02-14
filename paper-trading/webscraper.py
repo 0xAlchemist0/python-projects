@@ -1,9 +1,26 @@
+#we will use this scraping package to bypass cludflare
+import os
+
+#for alchemy
+import uuid
+
+import cloudscraper
 import requests
 from bs4 import BeautifulSoup
+from dotenv import load_dotenv
 
+unique_id = str(uuid.uuid4())  
 import AI
 
+load_dotenv()
+
 kolscan_leaderboard = "https://kolscan.io/leaderboard"
+kolscan_base_url = 'https://kolscan.io/'
+scraper = cloudscraper.create_scraper()
+ALCHEMY = os.getenv("ALCHEMY")
+def test():
+    request = scraper.get("https://dune.com/pixelz/solana-alpha-wallet-signals")
+    print(request.text)
 
 def topWallets():
     #use gmgn api
@@ -11,7 +28,20 @@ def topWallets():
     print(kolscan_leaderboard)
     return kolscan_leaderboard
 
-def gmgnLeaders():
+
+#work on tommorow
+def walletHoldings(addreses, isKolscan):
+    holdings = []
+
+
+    if (isKolscan):
+        for address in addreses:
+            url = kolscan_base_url + f"account/{address}"
+            request = requests.get(url)
+            top_holdings_div = BeautifulSoup(request.content, 'html.parser').find('div','account_accountHolding__q4sCD')
+            print(top_holdings_div)
+     
+
     return None
     
 def kolscan():
@@ -61,7 +91,9 @@ def extractElements(response, targets):
     
 
 
-topWallets()
+# topWallets()
+
+walletHoldings({"2YJbcB9G8wePrpVBcT31o8JEed6L3abgyCjt5qkJMymV"}, True)
 
 
 #schema for json:
