@@ -45,7 +45,8 @@ async def walletHoldings(addreses, isKolscan):
             async with async_playwright() as playwright:
                 account_html = await html_playwright(kolscan_base_url + f"account/{address}", playwright)
             soup = BeautifulSoup(account_html, 'html.parser')
-            print(soup.prettify())
+            holdings_div = soup.find('div', 'account_accountHoldingsContainer__3RGJ0')
+            print(holdings_div)
     return None
 #we will use kolscans website to scrape and get users holdings
 #do this first i cannot stress enough
